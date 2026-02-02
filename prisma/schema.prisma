@@ -1,0 +1,31 @@
+// Оплата за использование сервиса. Одна таблица — только платежи.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Платёж: сумма в копейках, провайдер (ЮKassa и т.д.), статус.
+// idempotencyKey — чтобы повторный запрос не создал второй платёж.
+model Payment {
+  id                 String   @id @default(cuid())
+  amountKopeks       Int      // сумма в копейках (29900 = 299 ₽)
+  currency           String   @default("RUB")
+  provider           String   // "yookassa" | "tbank" | "sber"
+  providerPaymentId  String?  @unique // id у провайдера
+  status             String   // pending | succeeded | failed | cancelled
+  idempotencyKey     String   @unique // заголовок Idempotency-Key от клиента
+  description        String?
+  returnUrl          String?  // куда вернуть пользователя после оплаты
+  metadata           Json?    // ответ провайдера (ссылка на оплату и т.д.)
+  createdAt          DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([status])
+  @@map("payments")
+}
