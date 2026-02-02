@@ -65,9 +65,7 @@ export function errorHandler(
   }
 
   console.error(err);
-  const message =
-    process.env.NODE_ENV !== "production" && err instanceof Error
-      ? err.message
-      : "Ошибка сервера.";
+  // В ответе возвращаем реальное сообщение — по нему можно понять причину (БД, Prisma и т.д.)
+  const message = err instanceof Error ? err.message : "Ошибка сервера.";
   res.status(500).json({ error: { code: "INTERNAL_ERROR", message } });
 }
