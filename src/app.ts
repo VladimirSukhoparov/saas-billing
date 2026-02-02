@@ -5,9 +5,9 @@
 
 import express from "express";
 import swaggerUi from "swagger-ui-express";
-import { swaggerDocument } from "./swagger.ts";
-import { paymentsRouter } from "./payments.ts";
-import { errorHandler } from "./errors.ts";
+import { swaggerDocument } from "./swagger.js";
+import { paymentsRouter } from "./payments.js";
+import { errorHandler } from "./errors.js";
 
 export const app = express();
 

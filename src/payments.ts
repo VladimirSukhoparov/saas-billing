@@ -4,12 +4,12 @@
 
 import { Router, Request, Response, NextFunction } from "express";
 import { z } from "zod";
-import { prisma } from "./db.ts";
+import { prisma } from "./db.js";
 import {
   ValidationError,
   NotFoundError,
   IdempotencyConflictError,
-} from "./errors.ts";
+} from "./errors.js";
 
 // ——— Схемы валидации (Zod) ———
 // Проверяем входящие данные до записи в БД
