@@ -5,7 +5,10 @@ export const swaggerDocument = {
     description: "API для создания и просмотра платежей. Суммы в копейках. Заголовок Idempotency-Key обязателен при создании.",
     version: "1.0.0",
   },
-  servers: [{ url: "http://localhost:3000" }],
+  servers: [
+    { url: "/", description: "Текущий хост" },
+    { url: "http://localhost:3000", description: "Локально" },
+  ],
   paths: {
     "/api/v1/payments": {
       post: {
