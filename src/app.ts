@@ -34,7 +34,7 @@ const swaggerHtml = `
   <script>
     window.onload = function() {
       window.ui = SwaggerUIBundle({
-        url: "./openapi.json",
+        url: "/api-docs/openapi.json",
         dom_id: "#swagger-ui",
         presets: [
           SwaggerUIBundle.presets.apis,
