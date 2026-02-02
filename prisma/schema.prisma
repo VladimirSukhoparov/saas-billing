@@ -1,8 +1,7 @@
 // Оплата за использование сервиса. Одна таблица — только платежи.
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {

@@ -2,7 +2,7 @@
  * Подключение к БД через Prisma.
  * Один экземпляр на приложение (в dev не создаём новый при hot-reload).
  */
-import { PrismaClient } from "./generated/prisma/client.ts";
+import { PrismaClient } from "@prisma/client";
 
 const globalForPrisma = globalThis as unknown as { prisma: PrismaClient | undefined };
 
